@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pizzaria 404</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <header>
+        <h1>Pizzaria 404</h1>
+        <nav>
+            <a href="#menu">Menu</a>
+            <a href="#pedidos">Fazer Pedido</a>
+        </nav>
+    </header>
+
+    <section id="menu">
+        <h2>Nosso Menu</h2>
+        <h3>Pizzas</h3>
+        <div class="menu-item">
+            <h3>Pizza de Calabresa</h3>
+            <p>R$ 30,00</p>
+            <button onclick="addToCart('Pizza de Calabresa', 30)">Adicionar ao Pedido</button>
+        </div>
+        <div class="menu-item">
+            <h3>Pizza Marguerita</h3>
+            <p>R$ 32,00</p>
+            <button onclick="addToCart('Pizza Marguerita', 32)">Adicionar ao Pedido</button>
+        </div>
+        <div class="menu-item">
+            <h3>Pizza Portuguesa</h3>
+            <p>R$ 35,00</p>
+            <button onclick="addToCart('Pizza Portuguesa', 35)">Adicionar ao Pedido</button>
+        </div>
+        <div class="menu-item">
+            <h3>Pizza de Frango com Catupiry</h3>
+            <p>R$ 38,00</p>
+            <button onclick="addToCart('Pizza de Frango com Catupiry', 38)">Adicionar ao Pedido</button>
+        </div>
+
+        <h3>Refrigerantes</h3>
+        <div class="menu-item">
+            <h3>Escolha seu Refrigerante:</h3>
+            <select id="refrigerante" name="refrigerante">
+                <option value="Coca-Cola">Coca-Cola</option>
+                <option value="Pepsi">Pepsi</option>
+                <option value="Fanta">Fanta</option>
+            </select>
+            <div>
+                <select id="tamanho" name="tamanho">
+                    <option value="Lata de 350ml">Lata de 350ml</option>
+                    <option value="1L">1L</option>
+                    <option value="2L">2L</option>
+                </select>
+            </div>
+            <button onclick="addBeverage()">Adicionar ao Pedido</button>
+        </div>
+    </section>
+
+    <section id="pedidos">
+        <h2>Seu Pedido</h2>
+        <div id="pedido-list"></div>
+        <p id="total"></p>
+        <button onclick="exibirFormularioPedido()">Finalizar Pedido</button>
+
+        <div id="formulario-pedido" style="display: none;">
+            <h3>Informações do Pedido</h3>
+            <form id="pedidoForm">
+                <label for="nome">Nome:</label>
+                <input type="text" id="nome" name="nome" required><br><br>
+
+                <label for="endereco">Endereço:</label>
+                <input type="text" id="endereco" name="endereco" required><br><br>
+
+                <label for="telefone">Telefone:</label>
+                <input type="text" id="telefone" name="telefone" required><br><br>
+
+                <label for="pagamento">Forma de Pagamento:</label>
+                <select id="pagamento" name="pagamento" required>
+                    <option value="cartao-credito">Cartão de Crédito</option>
+                    <option value="cartao-debito">Cartão de Débito</option>
+                    <option value="dinheiro">Dinheiro</option>
+                </select><br><br>
+
+                <label for="troco">Troco para:</label>
+                <input type="number" id="troco" name="troco" placeholder="Se for pagar em dinheiro"><br><br>
+
+                <button type="button" onclick="finalizarPedido()">Confirmar Pedido</button>
+            </form>
+        </div>
+    </section>
+
+    <footer>
+        <p>© 2024 Pizzaria 404</p>
+    </footer>
+
+    <div id="confirmModal" class="modal">
+        <div class="modal-content">
+            <span class="close" onclick="fecharModal()">&times;</span>
+            <h2>Pedido Confirmado!</h2>
+            <p id="pedidoDetalhes"></p>
+            <button class="btn" onclick="fecharModal()">OK</button>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
